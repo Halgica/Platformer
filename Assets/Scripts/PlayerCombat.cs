@@ -41,10 +41,4 @@ public class PlayerCombat : MonoBehaviour
             
         }
     }
-
-    public void Hurt()
-    {
-        
-    }
-
 }
