@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer myRenderer;
+    private Transform meleeRange;
 
     //variables
     private float horizontal;
@@ -78,7 +79,9 @@ public class PlayerMovement : MonoBehaviour
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        myRenderer.flipX = !isFacingRight;
+        Vector3 flipX = transform.localScale;
+        flipX.x *= -1;
+        transform.localScale = flipX;
     }
 
     public void Jump(InputAction.CallbackContext context)

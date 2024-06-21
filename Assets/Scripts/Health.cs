@@ -17,12 +17,8 @@ public class Health : MonoBehaviour
     {
         if (startingHealth <= 0)
         {
-            if(GetComponent<PlayerMovement>() != null)
-            GetComponent<PlayerMovement>().enabled = false;
+            disableMovement();
 
-            if(GetComponentInParent<EnemyPatrol>() != null)
-            GetComponentInParent<EnemyPatrol>().enabled = false;
-            
             anim.SetTrigger("Death");
         }
     }
@@ -32,5 +28,17 @@ public class Health : MonoBehaviour
         startingHealth -= damageTaken;
         anim.SetTrigger("Hurt");
         Debug.Log("Damage taken");
+    }
+
+    private void disableMovement() //disable movement for enemy/player
+    {
+            if(GetComponent<PlayerMovement>() != null)
+                GetComponent<PlayerMovement>().enabled = false;
+
+            if(GetComponentInParent<EnemyPatrol>() != null)
+                GetComponentInParent<EnemyPatrol>().enabled = false;
+
+            if(GetComponent<MeleeEnemy>() != null)
+                GetComponent<MeleeEnemy>().enabled = false;
     }
 }
